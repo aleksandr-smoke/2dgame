@@ -16,6 +16,10 @@ export class Canvas {
     this.initFpsCalculator();
   }
 
+  getCanvasElement() {
+    return this.canvas;
+  }
+
   animate(timestamp = 0) {
     this.clear();
     this.draw();

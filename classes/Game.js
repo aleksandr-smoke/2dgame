@@ -1,6 +1,9 @@
 import { Player } from './Player.js';
 import { LevelMap } from './LevelMap.js';
 import { mapData } from './../data/data.js';
+import { ScreenLevel } from './ScreenLevel.js';
+import { ScreenCreator } from './ScreenCreator.js';
+import { ScreenStatus } from './ScreenAbstract.js';
 
 export class Game {
   constructor(canvas) {
@@ -9,15 +12,7 @@ export class Game {
   }
 
   init() {
-    this.player = new Player();
-    this.player.setPosition({ x: 7, y: 8 });
-
-    this.map = new LevelMap(mapData, null);
-
-    this.canvas.setDrawCollection([this.map, this.player]);
-
-    rxjs.fromEvent(document, 'keydown').subscribe((event) => {
-      this.player.handleKeyDown(event, this.map);
-    });
+    new ScreenLevel(this.canvas, ScreenStatus.Showed);
+    // const screen = new ScreenCreator(this.canvas);
   }
 }
